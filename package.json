@@ -1,6 +1,9 @@
 {
-  "name": "cascadeui",
-  "private": true,
+  "name": "cascade",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "workspaces": [
     "packages/*"
   ],
@@ -9,5 +12,10 @@
     "react": "^18.3.1",
     "react-native": "^0.76.0",
     "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-native": ">=0.64.0",
+    "react-native-reanimated": "^3.15.3"
   }
 }
