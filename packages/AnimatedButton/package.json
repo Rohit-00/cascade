@@ -1,6 +1,9 @@
 {
   "name": "@cascadeui/animatedbutton",
   "version": "0.0.3",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "react native animated button",
   "author": "Rohit <rr1796@dseu.ac.in>",
   "homepage": "",
@@ -22,5 +25,5 @@
   "devDependencies": {
     "@types/react": "^18.3.12"
   },
-  "gitHead": "6b22136739cba5f006ef46df6a5d5a26e8506b83"
+  "gitHead": "666e99e25a96cef3bc861d3539bbff7eaac90c0f"
 }
