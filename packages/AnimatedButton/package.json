@@ -14,7 +14,7 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "components"
   ],
   "scripts": {
     "test": "node ./__tests__/AnimatedButton.test.js"
