@@ -1,6 +1,9 @@
 {
   "name": "@cascadeui/circular-progress",
   "version": "0.0.9",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "> TODO: description",
   "author": "Rohit <rr1796@dseu.ac.in>",
   "homepage": "https://github.com/Rohit-00/cascade#readme",
@@ -25,5 +28,6 @@
   },
   "devDependencies": {
     "react-native-svg": "^15.8.0"
-  }
+  },
+  "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
 }
