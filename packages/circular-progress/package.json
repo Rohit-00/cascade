@@ -1,0 +1,29 @@
+{
+  "name": "@cascadeui/circular-progress",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Rohit <rr1796@dseu.ac.in>",
+  "homepage": "https://github.com/Rohit-00/cascade#readme",
+  "license": "ISC",
+  "main": "lib/circular-progress.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rohit-00/cascade.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/circular-progress.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Rohit-00/cascade/issues"
+  },
+  "devDependencies": {
+    "react-native-svg": "^15.8.0"
+  }
+}
