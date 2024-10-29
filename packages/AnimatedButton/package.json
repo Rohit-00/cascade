@@ -1,5 +1,5 @@
 {
-  "name": "animatedbutton",
+  "name": "@cascadeui/animatedbutton",
   "version": "0.0.2",
   "description": "react native animated button",
   "author": "Rohit <rr1796@dseu.ac.in>",
@@ -22,5 +22,5 @@
   "devDependencies": {
     "@types/react": "^18.3.12"
   },
-  "gitHead": "cfceff057bc32e1275279d9eda2d87686d87266d"
+  "gitHead": "6b22136739cba5f006ef46df6a5d5a26e8506b83"
 }
