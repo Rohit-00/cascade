@@ -19,14 +19,12 @@
   "scripts": {
     "test": "node ./__tests__/AnimatedButton.test.js"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@types/react": "^18.3.12",
     "react-native-reanimated": "^3.16.1"
   },
-  "devDependencies": {
-    "@types/react": "^18.3.12"
-  },
   "peerDependencies": {
-    "react-native-reanimated": "^3.15.3"
+    "react-native-reanimated": "*"
   },
   "gitHead": "666e99e25a96cef3bc861d3539bbff7eaac90c0f"
 }
