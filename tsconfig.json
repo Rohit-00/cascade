@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "declaration": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["packages"],
+  "exclude": ["node_modules", "lib"]
+}

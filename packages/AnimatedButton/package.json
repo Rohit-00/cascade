@@ -1,0 +1,25 @@
+{
+  "name": "@cascadeui/animatedbutton",
+  "version": "0.0.0",
+  "description": "react native animated button",
+  "author": "Rohit <rr1796@dseu.ac.in>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/AnimatedButton.test.js"
+  },
+  "dependencies": {
+    "react-native-reanimated": "^3.16.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12"
+  }
+}
