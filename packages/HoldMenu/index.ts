@@ -1,0 +1,1 @@
+export {default as HoldMenu} from './component/HoldMenu'
