@@ -1,104 +1,221 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View, ImageSourcePropType } from 'react-native'
+import React, { useRef, useState} from 'react'
+import Animated, { Extrapolation, interpolate, interpolateColor, useAnimatedScrollHandler, useAnimatedStyle, useSharedValue } from 'react-native-reanimated'
 
-interface AnimatedSubscribeButtonProps {
-  buttonColor: string;
-  buttonTextColor?: string;
-  subscribeStatus: boolean;
-  initialText: React.ReactElement | string;
-  changeText: React.ReactElement | string;
-  buttonWidth?:number
+
+const {height , width} = Dimensions.get('window')
+
+type page = {
+  image : ImageSourcePropType,
+  heading : string,
+  subheading : string
 }
 
-const AnimatedSubscribeButton: React.FC<AnimatedSubscribeButtonProps> = ({
+interface MyComponentProps {
+    Pages:page[],
+    backgroundColors:any[],
+    onDone: () => void,
+    headingStyle?:{},
+    subheadingStyle?:{},
+    buttonColor?:string,
+    pagerDotsColor?:string,
+    buttonTextStyle?:{},
+    nextButton?:React.ReactNode
+  }
+
+const OnboardAnimation : React.FC<MyComponentProps> = ({
+  Pages,
+  backgroundColors,
+  onDone,
+  headingStyle,
   buttonColor,
-  subscribeStatus = false,
-  buttonTextColor = '#fff',
-  initialText,
-  changeText,
-  buttonWidth
-}) => {
-  const [isSubscribed, setIsSubscribed] = useState<boolean>(subscribeStatus);
+  subheadingStyle,
+  pagerDotsColor,
+  buttonTextStyle,
+  nextButton}) => {
+    
+    const translationX = useSharedValue(0)
+    const bgColor = useSharedValue('red')
+    const scrollPosition = useSharedValue(0)
+    const [lastPage,setLastPage] = useState<boolean>(false)
 
-  // Shared value for the opacity animation
-  const opacity = useSharedValue(1);
-  const translateY = useSharedValue(0);
+    const scrollViewRef = useRef<Animated.ScrollView>(null);
 
-  // Animate styles based on the subscription status
-  const animatedButtonStyle = useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(opacity.value, { duration: 300 }),
-    };
-  });
+    const scrollHandler = useAnimatedScrollHandler((event)=>{
+        translationX.value = event.contentOffset.x
+        scrollPosition.value = event.contentOffset.x
 
-  const animatedTextStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: withTiming(translateY.value, { duration: 300 }) }],
-    };
-  });
+        
+      })
 
-  const handlePress = () => {
-    // Trigger animation and toggle subscription state
-    opacity.value = 0; // Fade out
-    translateY.value = -50; // Move text up
+    
+    const handleNextPage = () => {
+    if (scrollViewRef.current) {
+      const nextPage = Math.ceil(scrollPosition.value / width) + 1;
+      scrollViewRef.current.scrollTo({ x: nextPage * width, animated: true });
+      const pageIndex = Math.round(translationX.value / width);
+      if(pageIndex+1===Pages.length-1){
+        setLastPage(true)
+      }
 
-    setTimeout(() => {
-      setIsSubscribed(!isSubscribed);
-      opacity.value = 1; // Fade in
-      translateY.value = 0; // Move text back to original position
-    }, 300);
+      if(lastPage===true){
+        onDone()
+      }
+    }
+  };
+
+  //Pager Dots
+  const renderDots = () => {
+
+    return Pages.map((_, index) => {
+      const animatedDotStyle = useAnimatedStyle(() => {
+        const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
+        const scale = interpolate(translationX.value, inputRange, [0.8, 1.5, 0.8], Extrapolation.CLAMP);
+        const opacity = interpolate(translationX.value, inputRange, [0.3, 1, 0.3], Extrapolation.CLAMP);
+        
+        
+        return {
+          transform: [{ scale }],
+          opacity,
+        };
+      });
+
+      return (
+        
+      <Animated.View key={index} style={[styles.dot, animatedDotStyle,{backgroundColor:pagerDotsColor||'black'}]} />
+      
+    );
+    });
+  };
+
+  const handleScrollEnd = (event: any) => {
+    const pageIndex = Math.round(event.nativeEvent.contentOffset.x / width);
+
+    if(pageIndex+1===Pages.length){
+      setLastPage(true)
+    }    
+ 
   };
 
   return (
-    <Animated.View style={[styles.buttonContainer,{width:buttonWidth||200}]}>
-      <TouchableOpacity
-        onPress={handlePress}
-        style={[
-          styles.button,
-          { backgroundColor: isSubscribed ? '#fff' : buttonColor, borderColor: buttonColor },
-        ]}
-        activeOpacity={1}
-      >
-        <Animated.View style={[animatedButtonStyle, animatedTextStyle]}>
-          {isSubscribed ? (
-            <View style={styles.textContainer}>
-              <Text style={[styles.buttonText, { color: buttonColor }]}>{changeText}</Text>
-            </View>
-          ) : (
-            <View style={styles.textContainer}>
-              <Text style={[styles.buttonText, { color: buttonTextColor }]}>{initialText}</Text>
-            </View>
-          )}
-        </Animated.View>
-      </TouchableOpacity>
-    </Animated.View>
-  );
-};
+    <View >
 
-export default AnimatedSubscribeButton
-// Styles for the component
+        <Animated.ScrollView ref={scrollViewRef} horizontal onScroll={scrollHandler} scrollEventThrottle={16}  pagingEnabled  contentOffset={{ x: scrollPosition.value, y: 0 }} showsHorizontalScrollIndicator={false} onMomentumScrollEnd={handleScrollEnd} alwaysBounceHorizontal={false}
+        >
+        {Pages.map((item,index)=>
+        {
+                const animatedStyle = useAnimatedStyle(()=>{
+                const inputRange = [0,width,width*2]  
+                const color = interpolateColor(translationX.value,inputRange,backgroundColors)
+                bgColor.value = color
+
+                return{
+                    backgroundColor:bgColor.value
+                }
+            })
+                const imageAnimatedStyle = useAnimatedStyle(()=>{
+                const inputRange = [(index-1)*width,index*width,(index+1)*width]
+                const scale = interpolate(translationX.value,inputRange,[0,1,0], Extrapolation.CLAMP)
+                const translate = interpolate(translationX.value,inputRange,[100,0,100], Extrapolation.CLAMP)
+
+                return{
+                    opacity:scale,
+                    transform:[{translateY:translate}],
+                }
+            })
+            
+            return(<Animated.View style={[animatedStyle,styles.container]} key={index}>
+                <View key={index}>
+                    <Animated.Image
+                    source={item.image}
+                    style={[styles.image,imageAnimatedStyle]}
+                    key={index}
+                    />
+                </View>
+                <Animated.Text style={[headingStyle||styles.text,imageAnimatedStyle]} key={item.heading}>{item.heading}</Animated.Text>
+                <Animated.Text style={[subheadingStyle||styles.subtext,imageAnimatedStyle]} key={item.subheading} >{item.subheading}</Animated.Text>
+                </Animated.View>)
+        }
+        )}
+       
+        </Animated.ScrollView>
+
+        <View style={styles.footerContainer}>
+        <View style={styles.dotsContainer}>{renderDots()}</View>
+
+   
+        <TouchableOpacity style={[styles.nextButton,{backgroundColor:buttonColor||"#ff6347"}]} onPress={handleNextPage}>
+          <Text style={buttonTextStyle||styles.buttonText}>{lastPage===true?'done':nextButton||'Next'}</Text>
+        </TouchableOpacity>
+
+      </View>
+    
+    </View>
+  )
+}
+
+export default OnboardAnimation
+
 const styles = StyleSheet.create({
-  buttonContainer: {
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-  },
-  button: {
-    width: '100%',
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 8,
-  },
-  textContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontWeight: '600',
-    fontSize: 16,
-  },
-});
+    container:{
+        height,
+        width,
+        alignItems:'center',
+        justifyContent:'center',
+
+    },
+    image:{
+        height:300,
+        width:width,
+        resizeMode:'contain',
+        bottom:30
+    },
+    text:{
+        fontSize:36,
+        fontWeight:'bold',
+        color:'black'
+    },
+    subtext:{
+        fontSize:16,
+        color:'black',
+        textAlign:'center',
+        width:width-40
+    },
+    nextButton: {
+        position: "absolute",
+        right: 20,  // Adjust to position button on screen
+       
+        paddingVertical: 10,
+        paddingHorizontal:30,
+        borderRadius: 100,
+        alignItems:'center',
+        justifyContent:'center'
+  
+      },
+      buttonText: {
+        color: "white",
+        fontSize:16
+      },
+      dotsContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        position: "absolute",  
+        width: "100%",
+      },
+      dot: {
+        width: 10,
+        height: 10,
+        borderRadius: 5,
+        marginHorizontal: 5,
+      },
+      footerContainer: {
+        position: "absolute",
+        bottom: 80,
+        width: "100%",
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor:'red'
+      
+      },
+    
+})
