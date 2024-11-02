@@ -1,0 +1,1 @@
+export {default as OnboardScreens} from './component/OnboardScreens'
