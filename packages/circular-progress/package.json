@@ -29,5 +29,8 @@
   "devDependencies": {
     "react-native-svg": "^15.8.0"
   },
+  "peerDependencies": {
+    "react-native-svg": "^15.8.0"
+  },
   "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
 }
