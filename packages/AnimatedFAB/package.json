@@ -1,0 +1,34 @@
+{
+  "name": "@cascadeui/animatedfab",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "react native animated floating action button",
+  "author": "Rohit <rohit.991063@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "component"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/AnimatedButton.test.js"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-native-vector-icons": "^6.4.18",
+    "react-native-reanimated": "^3.16.1"
+  },
+  "peerDependencies": {
+    "react-native-reanimated": "*"
+  },
+  "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84",
+  "dependencies": {
+    "react-native-vector-icons": "^10.2.0"
+  }
+}
