@@ -1,0 +1,1 @@
+export {default as AnimatedTabs} from './component/AnimatedTabs'
