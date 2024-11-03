@@ -1,6 +1,6 @@
 {
   "name": "@cascadeui/animated-tabs",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "publishConfig": {
     "access": "public"
   },
