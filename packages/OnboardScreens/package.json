@@ -1,5 +1,5 @@
 {
-  "name": "@cascadeui/onboardscreens",
+  "name": "@cascadeui/onboard-screens",
   "version": "0.0.21",
   "publishConfig": {
     "access": "public"
