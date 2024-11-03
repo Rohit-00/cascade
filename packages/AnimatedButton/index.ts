@@ -1,1 +1,1 @@
-export {default as AnimatedButton} from './component/AnimatedButton'
+export {default as AnimatedSubscribeButton} from './component/AnimatedButton'

@@ -1,5 +1,5 @@
 {
-  "name": "@cascadeui/animatedlist",
+  "name": "@cascadeui/animated-list",
   "version": "0.0.22",
   "publishConfig": {
     "access": "public"
