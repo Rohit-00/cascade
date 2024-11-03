@@ -1,5 +1,5 @@
 {
-  "name": "@cascadeui/animatedtabs",
+  "name": "@cascadeui/animated-tabs",
   "version": "0.0.20",
   "publishConfig": {
     "access": "public"
