@@ -1,1 +1,1 @@
-export {default as MultistepLoader} from './component/multistepLoader'
+export {default as MultiStepLoader} from './component/multistepLoader'
