@@ -1,0 +1,1 @@
+export {default as AnimatedSubscribeButton} from './component/AnimatedButton'

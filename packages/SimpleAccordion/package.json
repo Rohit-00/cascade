@@ -1,11 +1,11 @@
 {
-  "name": "@cascadeui/animated-fab",
+  "name": "@cascadeui/simple-accordion",
   "version": "0.0.23",
   "publishConfig": {
     "access": "public"
   },
-  "description": "react native animated floating action button",
-  "author": "Rohit <rohit.991063@gmail.com>",
+  "description": "react native animated button",
+  "author": "Rohit <rr1796@dseu.ac.in>",
   "homepage": "",
   "license": "ISC",
   "main": "index.ts",
@@ -29,8 +29,6 @@
     "react-native-vector-icons": "*"
 
   },
-  "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84",
-  "dependencies": {
-    
-  }
+  "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
+
 }
