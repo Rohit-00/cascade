@@ -20,7 +20,7 @@
     "test": "node ./__tests__/AnimatedButton.test.js"
   },
   "devDependencies": {
-    "@types/react": "^18.3.12",
+    "@types/react": "^18.3.12"
   },
 
   "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
