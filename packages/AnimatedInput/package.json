@@ -21,10 +21,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
-    "react-native-reanimated": "^3.16.1"
   },
-  "peerDependencies": {
-    "react-native-reanimated": "*"
-  },
+
   "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
 }
