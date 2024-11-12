@@ -1,6 +1,6 @@
 {
   "name": "@cascadeui/animated-input",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "publishConfig": {
     "access": "public"
   },
@@ -22,6 +22,5 @@
   "devDependencies": {
     "@types/react": "^18.3.12"
   },
-
   "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
 }
