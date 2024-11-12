@@ -1,6 +1,6 @@
 {
   "name": "@cascadeui/simple-accordion",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "publishConfig": {
     "access": "public"
   },
@@ -27,8 +27,6 @@
   "peerDependencies": {
     "react-native-reanimated": "*",
     "react-native-vector-icons": "*"
-
   },
   "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
-
 }
