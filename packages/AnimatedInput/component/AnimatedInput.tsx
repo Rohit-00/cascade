@@ -70,7 +70,7 @@ const AnimatedInput: React.FC<AnimatedInputProps> = ({
   };
 
   const handleBlur = () => {
-    if (!value) {
+    if (value === '') {
       Animated.parallel([
         Animated.timing(emailLabelPositionY, {
           toValue: 0,
