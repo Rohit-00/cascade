@@ -1,7 +1,7 @@
 
 # Cascade UI
 
-Cascade UI is a component library with the animated and production ready components.
+Cascade UI is a component library with animated and production ready components.
 
 ## Get Started
 
