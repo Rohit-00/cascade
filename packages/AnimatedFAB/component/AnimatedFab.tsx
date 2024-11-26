@@ -5,7 +5,6 @@ import Animated, {
     useSharedValue, 
     withTiming 
 } from 'react-native-reanimated';
-import { BlurView } from '@react-native-community/blur';
 
 type menuItem = {
     icon: React.ReactNode;
@@ -18,9 +17,10 @@ interface FABprop {
     fabColor?:string;
     fabMenuColor?:string;
     fabIcon:React.ReactNode;
+    backdropOpacity?:number;
 }
 
-const FABMenu: React.FC<FABprop> = ({ menuItems, fabColor, fabMenuColor, fabIcon }) => {
+const FABMenu: React.FC<FABprop> = ({ menuItems, fabColor, fabMenuColor, fabIcon, backdropOpacity }) => {
     const [isOpen, setIsOpen] = useState(false);
     const rotation = useSharedValue(0);
     const blurOpacity = useSharedValue(0);
@@ -56,13 +56,8 @@ const FABMenu: React.FC<FABprop> = ({ menuItems, fabColor, fabMenuColor, fabIcon
         <>
             {/* Backdrop Blur */}
             {isOpen && (
-                <Animated.View style={[StyleSheet.absoluteFill, animatedBlurStyle,{zIndex:40}]}>
-                    <BlurView
-                        style={StyleSheet.absoluteFill}
-                        blurType="dark"
-                        blurAmount={1}
-                        reducedTransparencyFallbackColor="white"
-                    />
+                <Animated.View style={[StyleSheet.absoluteFill, animatedBlurStyle,{zIndex:40,backgroundColor:`rgba(0,0,0,${backdropOpacity||0.7})`}]}>
+                   
                 </Animated.View>
             )}
 

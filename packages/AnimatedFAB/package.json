@@ -20,7 +20,6 @@
     "test": "node ./__tests__/AnimatedButton.test.js"
   },
   "devDependencies": {
-    "@react-native-community/blur": "^4.4.1",
     "@types/react": "^18.3.12",
     "react-native-reanimated": "^3.16.1"
   },
