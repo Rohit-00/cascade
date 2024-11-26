@@ -20,13 +20,12 @@
     "test": "node ./__tests__/AnimatedButton.test.js"
   },
   "devDependencies": {
+    "@react-native-community/blur": "^4.4.1",
     "@types/react": "^18.3.12",
-    "@types/react-native-vector-icons": "^6.4.18",
     "react-native-reanimated": "^3.16.1"
   },
   "peerDependencies": {
-    "react-native-reanimated": "*",
-    "react-native-vector-icons": "*"
+    "react-native-reanimated": "*"
   },
   "gitHead": "bf73d6f9c032730209a7e78d9444bb3bd4f49e84"
 }
