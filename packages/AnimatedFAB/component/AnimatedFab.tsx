@@ -5,6 +5,7 @@ import Animated, {
     useSharedValue, 
     withTiming 
 } from 'react-native-reanimated';
+import { BlurView } from '@react-native-community/blur';
 
 type menuItem = {
     icon: React.ReactNode;
@@ -18,9 +19,12 @@ interface FABprop {
     fabMenuColor?:string;
     fabIcon:React.ReactNode;
     backdropOpacity?:number;
+    positionRight?:number;
+    positionBottom?:number;
+    
 }
 
-const FABMenu: React.FC<FABprop> = ({ menuItems, fabColor, fabMenuColor, fabIcon, backdropOpacity }) => {
+const FABMenu: React.FC<FABprop> = ({ menuItems, fabColor, fabMenuColor, fabIcon, backdropOpacity, positionBottom, positionRight }) => {
     const [isOpen, setIsOpen] = useState(false);
     const rotation = useSharedValue(0);
     const blurOpacity = useSharedValue(0);
@@ -62,7 +66,7 @@ const FABMenu: React.FC<FABprop> = ({ menuItems, fabColor, fabMenuColor, fabIcon
             )}
 
             {/* Menu Items and FAB */}
-            <View style={styles.container}>
+            <View style={[styles.container,{right:positionRight||30,bottom:positionBottom||50}]}>
                 {menuItems.map((item, index) => (
                     <Animated.View style={[styles.menuItem, animatedMenuStyle(index)]} key={index}>
                       <Animated.Text style={[animatedBlurStyle,styles.label]}>{item.label}</Animated.Text>
@@ -87,8 +91,6 @@ export default FABMenu;
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        bottom: 50,
-        right: 30,
         zIndex: 100,
     },
     fab: {
