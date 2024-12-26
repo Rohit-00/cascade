@@ -7,7 +7,7 @@ Cascade UI is a component library with animated and production-ready components.
 ## Get Started
 
 Refer to [getting started guide](https://uidocs.pages.dev) for instructions and documentation
-. Checkout NPM page [here](https://www.npmjs.com/settings/cascadeui/packages?page=0&perPage=10)
+
 
 ## Installation
 
@@ -19,7 +19,7 @@ yarn add <component-name>
 
 ## components
 
-| Component               | npm Package Name      |
+| Component               | NPM Package Name      |
 |-------------------------|-----------------------|
 | **Animated Button**     | `@cascadeui/animatedbutton` |
 | **Animated Input**      | `@cascadeui/animated-input`  |
