@@ -8,8 +8,28 @@ Cascade UI is a component library with animated and production ready components.
 
 Refer to [getting started guide](https://uidocs.pages.dev) for instructions and documentation
 
-## How to Install
-Install component via npm package respective to the component or manually copy paste the code from the [documentation](https://uidocs.pages.dev).
+## Installation
 
+```bash
+npm install <component-name>
+# or
+yarn add <component-name>
+```
 
-    
+## components
+
+| Component               | npm Package Name      |
+|-------------------------|-----------------------|
+| **Animated Button**     | `@cascadeui/animatedbutton` |
+| **Animated Input**      | `@cascadeui/animated-input`  |
+| **Animated Lists**      | `@cascadeui/animated-lists`  |
+| **Animated Tabs**       | `@cascadeui/animated-tabs`   |
+| **Circular Progress**   | `@cascadeui/circular-progress` |
+| **Credit Card Animation** | `@cascadeui/credit-card` |
+| **Floating Action Button** | `@yourlib/floating-action-button` |
+| **Hold to open menu**   | `@cascadeui/hold-menu` |
+| **Multi-Step Loader**   | `@cascadeui/multi-step-loader` |
+| **Onboarding Animation** | `@cascadeui/onboarding-animation` |
+| **Tinder Cards**        | `@cascadeui/tinder-cards`     |
+
+More Coming Soon :)
