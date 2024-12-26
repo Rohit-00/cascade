@@ -1,12 +1,13 @@
 
 # Cascade UI
 
-Cascade UI is a component library with animated and production ready components.
+Cascade UI is a component library with animated and production-ready components.
 ![Webpage](https://i.ibb.co/W0pmYQY/image-2024-11-18-163732970.png)
 
 ## Get Started
 
 Refer to [getting started guide](https://uidocs.pages.dev) for instructions and documentation
+Checkout NPM page [here](https://www.npmjs.com/settings/cascadeui/packages?page=0&perPage=10)
 
 ## Installation
 
@@ -33,3 +34,10 @@ yarn add <component-name>
 | **Tinder Cards**        | `@cascadeui/tinder-cards`     |
 
 More Coming Soon :)
+
+## Made with
+
+- **Reanimated 3**
+- **React Native Animation API**
+- **Gesture Handler**
+and love 
